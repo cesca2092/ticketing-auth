@@ -38,6 +38,8 @@ const start = async () => {
 
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+    // TO connect to a MongoDB in local machine only for dev purposes
+    // await mongoose.connect('mongodb://host.docker.internal:27017/auth');
     console.log("Connected to MongoDB");
 
   } catch (error) {
