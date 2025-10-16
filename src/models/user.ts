@@ -43,11 +43,11 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function (done) {
+  // this -> current user, that's why we use function nor arrow
   if (this.isModified('password')) {
     const hashed = await Password.toHash(this.get('password'));
     this.set('password', hashed);
   }
-
   done();
 });
 
@@ -55,6 +55,7 @@ userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
 
+// ------------------------------- Generic syntax
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 
 export { User };

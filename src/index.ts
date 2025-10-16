@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import { app } from './app';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const start = async () => {
 
@@ -20,6 +23,6 @@ const start = async () => {
 
 
 app.listen(3000, () => {
-  console.log("Listening on port 3000!!!");
+  console.log("Listening on port 3000!");
 });
 start();
